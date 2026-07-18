@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renzo Palmisano — Lecturer in Games Development & Photographer</title>
+  <meta name="description" content="Renzo Palmisano is a Lecturer in Games Development at University of Staffordshire and professional photographer.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+  /* Reset & base */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080808;
+    --surface: #111;
+    --border: #1e1e1e;
+    --text: #f0f0f0;
+    --muted: #777;
+    --accent: #c8a45c;
+    --max-width: 1100px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lexend', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.8; }
+
+    /* Navigation */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover { color: var(--text); opacity: 1; }
+
+    /* Sections */
+    section { padding: 6rem 2rem; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+
+    .section-title span { color: var(--accent); font-weight: 600; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 5rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-image {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .hero-image img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    .hero-intro h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-intro .tagline {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-intro p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-social { display: flex; gap: 1.5rem; }
+    .hero-social a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      border-bottom: 1px solid transparent;
+    }
+    .hero-social a:hover { color: var(--text); border-bottom-color: var(--accent); }
+
+    /* About */
+    .about { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .about-text {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 750px;
+    }
+
+    .about-text strong { color: var(--text); }
+
+    /* Game Dev */
+    .game-dev-intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 3rem;
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .badge-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .badge-card img {
+      max-width: 180px;
+      margin: 0 auto 1rem;
+    }
+
+    .badge-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .modules-list {
+      list-style: none;
+      margin-top: 2rem;
+    }
+
+    .modules-list li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 1rem;
+    }
+
+    .modules-list li strong { color: var(--text); }
+    .modules-list li span { color: var(--muted); display: block; font-size: 0.9rem; margin-top: 0.25rem; }
+
+    .epic-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .epic-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .epic-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    .epic-card p {
+      padding: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Photography */
+    .photo-intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 3rem;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 4px;
+      transition: transform 0.3s, opacity 0.3s;
+      cursor: pointer;
+    }
+
+    .photo-grid img:hover {
+      transform: scale(1.03);
+      opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    footer p {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer .footer-social { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
+    footer .footer-social a { color: var(--muted); font-size: 0.9rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-image { max-width: 240px; margin: 0 auto; }
+      .hero-intro h1 { font-size: 2.2rem; }
+      .hero-social { justify-content: center; }
+      .epic-grid { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0.75rem 1rem; }
+      .nav-brand { font-size: 0.9rem; }
+      .nav-links a { font-size: 0.75rem; }
+      section { padding: 4rem 1.25rem; }
+      .hero-intro h1 { font-size: 1.8rem; }
+      .section-title { font-size: 1.5rem; }
+      .photo-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-brand">Renzo Palmisano</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#gamedev">Games Development</a></li>
+        <li><a href="#photography">Photography</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-image">
+        <img src="images/me.jpg" alt="Renzo Palmisano portrait">
+      </div>
+      <div class="hero-intro">
+        <h1>Renzo Palmisano</h1>
+        <p class="tagline">Lecturer in Games Development & Photographer</p>
+        <p>University lecturer specialising in 3D modular game design, Unreal Engine development, and professional photography.</p>
+        <div class="hero-social">
+          <a href="https://linkedin.com/in/renzospalmisano" target="_blank">LinkedIn</a>
+          <a href="https://youtube.com/@renzospalmisano" target="_blank">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title"><span>About</span></h2>
+      <p class="about-text">
+        I'm a lecturer, educator, and professional photographer with a deep passion for the intersection of technology, creativity, and visual storytelling. Currently based at the University of Staffordshire, I bring years of industry experience to my teaching across games design, 3D production, and photography.
+      </p>
+    </div>
+  </section>
+
+  <!-- Games Development -->
+  <section id="gamedev">
+    <div class="container">
+      <h2 class="section-title"><span>Games</span> Development</h2>
+      <p class="game-dev-intro">
+        I lecture in the Games Development degree programme across Level 4, 5 and 6 modules at the University of Staffordshire. With extensive industry experience working on AAA titles, I bring real-world insight to every session.
+      </p>
+
+      <!-- Badges -->
+      <div class="badge-grid">
+        <div class="badge-card">
+          <img src="images/game republic.png" alt="Game Republic logo">
+          <p>Game Republic collaborator</p>
+        </div>
+        <div class="badge-card">
+          <img src="images/Instructor Partner 2026.png" alt="Epic Games Instructor Partner 2026">
+          <p>Epic Games Instructor Partner 2026</p>
+        </div>
+        <div class="badge-card">
+          <img src="images/Instructor Partner 2026B.png" alt="Epic Games Instructor Partner 2026">
+          <p>Epic Games Faculty Certified Programme</p>
+        </div>
+      </div>
+
+      <!-- Modules -->
+      <h3 style="font-weight: 400; margin-bottom: 0.5rem;">Teaching Modules</h3>
+      <ul class="modules-list">
+        <li><strong>Level Design Principles</strong> — Level 5/6</li>
+        <li><strong>3D Modular Game Design</strong> — Level 5</li>
+        <li><strong>Introduction to Games Production</strong> — Level 4</li>
+        <li><strong>Project Management for Games Design</strong> — Level 5</li>
+        <li><strong>Professional Practice for Games Design</strong> — Level 4/5</li>
+        <li><strong>3D Environment Design and Production</strong> — Level 4</li>
+        <li><strong>Unreal Engine Development</strong> — Level 5/6</li>
+        <li><strong>Final Major Project / Dissertation</strong> — Level 6</li>
+      </ul>
+
+      <!-- Epic Games Log entries -->
+      <div class="epic-grid">
+        <div class="epic-card">
+          <img src="images/face_light.png" alt="Face Lighting project">
+          <p><strong>Face Lighting Study</strong><br>Epic Games Megascans Research — exploring realistic facial illumination and material rendering in Unreal Engine 5.</p>
+        </div>
+        <div class="epic-card">
+          <img src="images/mrgb.png" alt="MRGB project">
+          <p><strong>Material Research</strong><br>Epic Games Megascans Research — investigating material response and physically based rendering workflows.</p>
+        </div>
+      </div>
+
+      <p style="color: var(--muted); margin-top: 1.5rem; font-size: 0.9rem;">
+        Views expressed are my own.
+      </p>
+    </div>
+  </section>
+
+  <!-- Photography -->
+  <section class="about" id="photography">
+    <div class="container">
+      <h2 class="section-title"><span>Photography</span> Journal</h2>
+      <p class="photo-intro">
+        A personal journal of my photography work. Exploring landscapes, architecture, and visual storytelling through the lens.
+      </p>
+      <div class="photo-grid">
+        <img src="images/B0000023.jpg" alt="Photography 1">
+        <img src="images/B0000007.jpg" alt="Photography 2">
+        <img src="images/B0000001.jpg" alt="Photography 3">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-social">
+        <a href="https://linkedin.com/in/renzospalmisano" target="_blank">LinkedIn</a>
+        <a href="https://youtube.com/@renzospalmisano" target="_blank">YouTube</a>
+      </div>
+      <p>&copy; 2026 Renzo Palmisano. All rights reserved.</p>
+      <p style="margin-top: 0.25rem;">Views expressed are my own.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
