@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renzo Palmisano — Games Designer, 3D Artist, Photographer & Lecturer</title>
+  <meta name="description" content="Games designer, 3D artist, photographer, and lecturer. I build environments in Unreal Engine, study light across mediums, and create tutorials that bridge the gap between technique and craft.">
+  <meta name="keywords" content="Renzo Palmisano, games designer, 3D artist, photographer, Unreal Engine, Hasselblad, tutorials, lecturer">
+  <meta name="author" content="Renzo Palmisano">
+  <meta name="robots" content="index, follow, noimageai">
+  <meta name="googlebot-image" content="noimageai">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://renzopalmisano.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Renzo Palmisano — Games Designer, 3D Artist, Photographer & Lecturer">
+  <meta property="og:description" content="Games designer, 3D artist, photographer, and lecturer. I build environments in Unreal Engine, study light across mediums, and create tutorials that bridge the gap between technique and craft.">
+  <meta property="og:image" content="https://renzopalmisano.com/images/me.jpg">
+  <meta property="og:url" content="https://renzopalmisano.com/">
+  <meta property="profile:username" content="renzousus">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Renzo Palmisano",
+    "url": "https://renzopalmisano.com/",
+    "image": "https://renzopalmisano.com/images/me.jpg",
+    "jobTitle": "Lecturer in Games Development",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Staffordshire University"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/renzousus",
+      "https://www.youtube.com/@RenzoPalmisano"
+    ],
+    "knowsAbout": ["Game Design", "3D Art", "Unreal Engine", "Photography"]
+  }
+  </script>
+  <link rel="icon" type="image/jpeg" href="favicon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080808;
+      --surface: #111;
+      --border: #1e1e1e;
+      --text: #f0f0f0;
+      --muted: #777;
+      --accent: #c8a45c;
+      --max-width: 1100px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lexend', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.8; }
+
+    /* Navigation */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(8, 8, 8, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-brand img { width: 36px; height: 36px; border-radius: 50%; }
+    .nav-brand span {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--text); opacity: 1; }
+
+    /* Sections — scroll reveal */
+    section { padding: 6rem 2rem; }
+    .container { max-width: var(--max-width); margin: 0 auto; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+    .section-title span { color: var(--accent); font-weight: 600; }
+
+    /* Hero — text left, photo right */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 5rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-image {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .hero-image img { width: 100%; height: auto; }
+
+    .hero-intro h1 a {
+      color: var(--text);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-intro .tagline {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-intro .bio {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 580px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-social { display: flex; gap: 1.5rem; }
+    .hero-social a { color: var(--muted); font-size: 0.95rem; }
+    .hero-social a:hover { color: var(--text); opacity: 1; }
+
+    /* Badges inline with hero content */
+    .hero-badges { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+    .hero-badges img { max-width: 140px; border-radius: 4px; }
+
+    /* Tutorials */
+    .intro { color: var(--muted); font-size: 1.05rem; max-width: 700px; margin-bottom: 3rem; }
+
+    .tutorial-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .tutorial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(200, 164, 92, 0.08);
+      border-color: var(--accent);
+    }
+
+    .tutorial-card img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tutorial-card:hover img { transform: scale(1.03); }
+
+    .tutorial-card-body { padding: 2rem; }
+    .tutorial-card-body h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .tutorial-card-body .meta { color: var(--accent); font-size: 0.85rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .tutorial-card-body p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+    .learn-list, .why-text { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .learn-list li { padding: 0.3rem 0; }
+
+    h4 { font-weight: 500; margin-bottom: 0.75rem; color: var(--text); }
+
+    .resources { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    .resources h5 { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .resources a { font-size: 0.9rem; }
+
+    /* YouTube embed */
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      margin-top: 1rem;
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+      border-radius: 4px;
+    }
+
+    /* Photography */
+    .gear { color: var(--accent); font-size: 0.85rem; margin-bottom: 3rem; letter-spacing: 0.05em; }
+    .photo-story { color: var(--muted); font-size: 1rem; max-width: 700px; margin-bottom: 2rem; line-height: 1.8; }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .photo-item {
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .photo-item:hover img { transform: scale(1.03); }
+
+    .photo-settings {
+      padding: 0.6rem 0.25rem;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.95);
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      color: #fff; font-size: 1.5rem; cursor: pointer; background: none; border: none;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    footer p { color: var(--muted); font-size: 0.85rem; }
+    footer .footer-social { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
+    footer .footer-social a { color: var(--muted); font-size: 0.9rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-image { max-width: 280px; margin: 0 auto; }
+      .hero-intro h1 a { font-size: 2.2rem; }
+      .hero-social { justify-content: center; }
+      .hero-badges { justify-content: center; }
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .resources { grid-template-columns: 1fr; gap: 1rem; }
+      .nav-links { gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0.75rem 1rem; }
+      .nav-brand span { font-size: 0.9rem; }
+      .nav-links a { font-size: 0.75rem; }
+      section { padding: 4rem 1.25rem; }
+      .hero-intro h1 a { font-size: 1.8rem; }
+      .section-title { font-size: 1.5rem; }
+      .photo-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#top" class="nav-brand">
+        <img src="images/logo.jpg" alt="Renzo Palmisano logo">
+        <span>Renzo Palmisano</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#gamedev">Games Development</a></li>
+        <li><a href="#photography">Photography Journal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="hero-intro">
+        <h1><a href="#top">Renzo Palmisano</a></h1>
+        <p class="tagline">Games Designer, 3D Artist, Photographer &amp; Lecturer</p>
+        <p class="bio">I build environments in Unreal Engine, study light across mediums, and create tutorials that bridge the gap between technique and craft. This site is a working journal — the photography section captures real-world environments that feed into my 3D practice, and the games section documents builds, lighting studies, and tutorials.</p>
+        <div class="hero-badges">
+          <img src="images/game republic.png" alt="Game Republic logo">
+          <img src="images/Instructor Partner 2026.png" alt="Epic Games Instructor Partner 2026">
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="images/me.jpg" alt="Renzo Palmisano portrait">
+      </div>
+    </div>
+  </section>
+
+  <!-- Games Development -->
+  <section class="alt-bg" id="gamedev">
+    <div class="container">
+      <h2 class="section-title reveal"><span>Games</span> Development</h2>
+
+      <p class="intro reveal reveal-delay-1">
+        Games development is where my 3D work, Unreal Engine projects, and tutorials live. Games design has always been the thread that ties everything together. I've been building environments, studying light, and working with textures for years, and that practice now feeds directly into how I teach and how I create.<br><br>
+        The work here ranges from finished environment builds to step-by-step tutorials. I document the process as much as the result, because understanding how something is built matters just as much as the final image. Whether it's a lighting study, a modular kit, or a breakdown of technique, it's all here.
+      </p>
+
+      <!-- Classic Portrait Lighting -->
+      <div class="tutorial-card reveal reveal-delay-2">
+        <img src="images/face_light.jpg" alt="Classic Portrait Lighting Techniques">
+        <div class="tutorial-card-body">
+          <span class="meta">68 min &middot; Unreal Engine 5.5</span>
+          <h3>Classic Portrait Lighting Techniques in Unreal Editor</h3>
+          <p>Unleash your creativity with this tutorial on mastering classic portrait lighting techniques in Unreal Engine 5.5.1. Whether you're creating cinematic sequences or realistic character renders, this guide walks you through the steps.</p>
+
+          <h4>What You'll Learn</h4>
+          <ul class="learn-list">
+            <li>Five Classic Portrait Lighting Styles: Recreate Butterfly, Loop, Rembrandt, Split, and Rim lighting techniques to elevate your portraits.</li>
+            <li>MetaHuman Integration: Import and configure MetaHumans for lifelike animations.</li>
+            <li>Realistic Facial Animations: Use Live Link for synchronised movements and expressions.</li>
+            <li>Cinematic Rendering: Export sequences using the advanced Movie Render Queue.</li>
+            <li>Advanced Lighting Techniques: Experiment with Rect Lights and Post Process Volumes to refine your scenes.</li>
+          </ul>
+
+          <h4>Why You'll Love This Tutorial</h4>
+          <p class="why-text">Discover how lighting shapes emotions, adds depth, and enhances storytelling in your visuals. This tutorial blends technical detail with artistic principles to empower creators in game development, virtual production, and digital cinematography.</p>
+
+          <h4>Technical Requirements</h4>
+          <p class="why-text">Compatible with Unreal Engine 5.5</p>
+
+          <!-- YouTube embed -->
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/DZg0WkmtX1g?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Classic Portrait Lighting Techniques"></iframe>
+          </div>
+
+          <div class="resources">
+            <div>
+              <h5>Documentation &amp; Tutorials</h5>
+              <a href="https://drive.google.com/file/d/13UCsXZIcxvw0B0zRsB7Uop6hT5G3onyq/view" target="_blank">Slides</a>
+            </div>
+            <div>
+              <h5>Project Files</h5>
+              <a href="https://drive.google.com/file/d/1fi47iOMDevzPfO6nmGS6_OFJmf76f3to/view?usp=sharing" target="_blank">Project Files</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Movie Render Graph -->
+      <div class="tutorial-card reveal reveal-delay-3">
+        <img src="images/mrgb.jpg" alt="Movie Render Graph">
+        <div class="tutorial-card-body">
+          <span class="meta">35 min &middot; Unreal Engine 5.7</span>
+          <h3>Movie Render Graph (MRG)</h3>
+          <p>Understand the Movie Render Graph to create cinematic grade sequences, layer-specific renders, and automated workflows. This tutorial walks you through the essential steps to set up MRG and harness advanced features like per-layer rendering.</p>
+
+          <h4>What You'll Learn</h4>
+          <ul class="learn-list">
+            <li>Discuss the importance and difference of MRG vs. MRQ.</li>
+            <li>Design an MRG pipeline for layer rendering.</li>
+            <li>Create a render using a PNG sequence.</li>
+            <li>Critique outputs and troubleshoot issues.</li>
+          </ul>
+
+          <h4>Why You'll Love This Tutorial</h4>
+          <p class="why-text">Learn how to replace the legacy Movie Render Queue with a modular, node-based system that gives you granular control over every aspect of the render pipeline. Whether you're producing high-fidelity cinematics, creating layered assets for compositing, or automating production pipelines, MRG offers the flexibility and performance you need.</p>
+
+          <h4>Technical Requirements</h4>
+          <p class="why-text">Compatible with Unreal Engine 5.7</p>
+
+          <!-- YouTube embed -->
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/aCbV8VbjBGI?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Movie Render Graph (MRG)"></iframe>
+          </div>
+
+          <div class="resources">
+            <div>
+              <h5>Documentation &amp; Tutorials</h5>
+              <a href="https://drive.google.com/file/d/1pVOlCc-I234_vaORKhhyViEIiW1XN5t1/view?usp=sharing" target="_blank">Slides</a>
+            </div>
+            <div>
+              <h5>Project Files</h5>
+              <a href="https://drive.google.com/file/d/15SWqIoPn-juxPxj5ufvIzLtJfCQau1Ei/view?usp=sharing" target="_blank">Project Files</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photography Journal -->
+  <section id="photography">
+    <div class="container">
+      <h2 class="section-title reveal"><span>Photography</span> Journal</h2>
+
+      <p class="photo-story reveal reveal-delay-1">
+        Photography has been a serious pursuit since I was young, backed by an MA from the University of Central Lancashire. This journal showcases work shot on my Hasselblad X1D-50C with the XCD 3.5/45 lens: landscapes, environments, and street photography.<br><br>
+        I came to the X1D through a long road with Canon and Sony. Shot extensively on the 5DS R and 5D Mark IV, then moved to the Sony A7R III and IV for the resolution. But medium format changed something. The X1D forces you to slow down. Think about your composition. Take your time. It's not a camera you fire off blindly, and that's exactly why I chose it. The 50MP sensor doesn't just give more detail, it gives more depth. The way highlights roll off, the gradation in shadows, the quietness of the image. It's the camera I reach for when I want the file to match what I saw.
+      </p>
+      <p class="gear reveal reveal-delay-1">Hasselblad X1D-50C &middot; XCD 3.5/45 lens</p>
+
+      <div class="photo-grid reveal reveal-delay-2">
+        <div class="photo-item" data-src="images/B0000023.jpg">
+          <img src="images/B0000023.jpg" alt="Photography 1">
+          <p class="photo-settings">f/6.3 &middot; 1/200s &middot; ISO 100 &middot; 45mm</p>
+        </div>
+        <div class="photo-item" data-src="images/B0000007.jpg">
+          <img src="images/B0000007.jpg" alt="Photography 2">
+          <p class="photo-settings">f/8 &middot; 1/250s &middot; ISO 100 &middot; 45mm</p>
+        </div>
+        <div class="photo-item" data-src="images/B0000001.jpg">
+          <img src="images/B0000001.jpg" alt="Photography 3">
+          <p class="photo-settings">f/8 &middot; 1/250s &middot; ISO 100 &middot; 45mm</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close">&times;</button>
+    <img src="" alt="Full size photo">
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/renzousus" target="_blank">LinkedIn</a>
+        <a href="https://www.youtube.com/@RenzoPalmisano" target="_blank">YouTube</a>
+      </div>
+      <p>&copy; 2026 Renzo Palmisano. All rights reserved.</p>
+      <p style="margin-top: 0.25rem;">Views expressed are my own.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = lightbox.querySelector('img');
+
+    document.querySelectorAll('.photo-item').forEach(item => {
+      item.addEventListener('click', () => {
+        lbImg.src = item.dataset.src;
+        lightbox.classList.add('active');
+      });
+    });
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+        lightbox.classList.remove('active');
+      }
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Disable right-click and drag on images
+    document.addEventListener('contextmenu', e => {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+
+    document.addEventListener('dragstart', e => {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+  </script>
+
+</body>
+</html>
