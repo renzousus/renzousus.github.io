@@ -51,25 +51,38 @@
         });
     }
 
-    if (banner) {
-      // Only show banner if no decision has been made yet
-      if (!cookieConsent) {
+    // If user previously declined, show an 'Enable videos' button in the footer
+    if (cookieConsent === 'declined') {
+        const footer = document.querySelector('footer .container');
+        const enableBtn = document.createElement('button');
+        enableBtn.className = 'cookie-btn';
+        enableBtn.textContent = 'Enable YouTube videos';
+        enableBtn.style.marginTop = '1rem';
+        enableBtn.addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'accepted');
+            loadVideos();
+            enableBtn.remove();
+        });
+        footer.appendChild(enableBtn);
+    } 
+    // If user previously accepted, load videos immediately and hide banner
+    else if (cookieConsent === 'accepted') {
+        loadVideos();
+    } 
+    // First time visitor: show banner and attach event listeners
+    else if (banner) {
         banner.classList.remove('hidden');
-      } else if (cookieConsent === 'accepted') {
-        // Load videos immediately if previously accepted
-        loadVideos();
-      }
 
-      document.getElementById('accept-cookies').addEventListener('click', () => {
-        localStorage.setItem('cookie_consent', 'accepted');
-        banner.classList.add('hidden');
-        loadVideos();
-      });
+        document.getElementById('accept-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'accepted');
+            banner.classList.add('hidden');
+            loadVideos();
+        });
 
-      document.getElementById('decline-cookies').addEventListener('click', () => {
-        localStorage.setItem('cookie_consent', 'declined');
-        banner.classList.add('hidden');
-      });
+        document.getElementById('decline-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'declined');
+            banner.classList.add('hidden');
+        });
     }
 
   </script>
@@ -601,25 +614,38 @@
         });
     }
 
-    if (banner) {
-      // Only show banner if no decision has been made yet
-      if (!cookieConsent) {
+    // If user previously declined, show an 'Enable videos' button in the footer
+    if (cookieConsent === 'declined') {
+        const footer = document.querySelector('footer .container');
+        const enableBtn = document.createElement('button');
+        enableBtn.className = 'cookie-btn';
+        enableBtn.textContent = 'Enable YouTube videos';
+        enableBtn.style.marginTop = '1rem';
+        enableBtn.addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'accepted');
+            loadVideos();
+            enableBtn.remove();
+        });
+        footer.appendChild(enableBtn);
+    } 
+    // If user previously accepted, load videos immediately and hide banner
+    else if (cookieConsent === 'accepted') {
+        loadVideos();
+    } 
+    // First time visitor: show banner and attach event listeners
+    else if (banner) {
         banner.classList.remove('hidden');
-      } else if (cookieConsent === 'accepted') {
-        // Load videos immediately if previously accepted
-        loadVideos();
-      }
 
-      document.getElementById('accept-cookies').addEventListener('click', () => {
-        localStorage.setItem('cookie_consent', 'accepted');
-        banner.classList.add('hidden');
-        loadVideos();
-      });
+        document.getElementById('accept-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'accepted');
+            banner.classList.add('hidden');
+            loadVideos();
+        });
 
-      document.getElementById('decline-cookies').addEventListener('click', () => {
-        localStorage.setItem('cookie_consent', 'declined');
-        banner.classList.add('hidden');
-      });
+        document.getElementById('decline-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'declined');
+            banner.classList.add('hidden');
+        });
     }
 
   </script>
