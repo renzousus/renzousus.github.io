@@ -41,15 +41,28 @@
     "knowsAbout": ["Game Design", "3D Art", "Unreal Engine", "Photography"]
   }
 
-    // Cookie Consent Logic
-    const cookieConsent = localStorage.getItem('cookie_consent');
-    const banner = document.getElementById('cookie-banner');
+    // Click-to-Load logic for videos (Double as Consent)
+    document.querySelectorAll('.video-placeholder').forEach(placeholder => {
+        placeholder.addEventListener('click', () => {
+            const wrap = placeholder.parentElement;
+            const url = placeholder.dataset.src;
 
-    function loadVideos() {
-        document.querySelectorAll('.youtube-embed').forEach(iframe => { 
-            if(!iframe.src) iframe.src = iframe.dataset.src; 
+            // Replace the video-placeholder with a real iframe
+            const newIframe = document.createElement('iframe');
+            newIframe.src = url;
+            newIframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            newIframe.allowFullscreen = true;
+            newIframe.style.width = "100%";
+            newIframe.style.height = "100%";
+            newIframe.style.border = "none";
+            newIframe.style.position = "absolute";
+            newIframe.style.top = "0";
+            newIframe.style.left = "0";
+
+            wrap.appendChild(newIframe);
+            placeholder.remove();
         });
-    }
+    });
 
 
 
@@ -344,6 +357,14 @@
       .photo-grid { grid-template-columns: 1fr; }
     }
 
+    /* Video Thumbnails & Placeholders */
+    .video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; border-radius: 4px; overflow: hidden; }
+    .video-placeholder img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .video-placeholder:hover img { transform: scale(1.05); }
+    .play-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; background: rgba(0,0,0,0.5); border-radius: 50%; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1); transition: transform 0.2s; }
+    .play-button::after { content: ''; display: block; width: 0; height: 0; border-style: solid; border-width: 12px 0 12px 20px; border-color: transparent transparent transparent var(--accent); margin-left: 4px; }
+    .video-placeholder:hover .play-button { transform: translate(-50%, -50%) scale(1.1); }
+
     /* Video Consent Text */
     .video-consent-text { color: var(--muted); font-size: 0.8rem; margin-top: 0.5rem; text-align: center; font-style: italic; }
 
@@ -417,7 +438,10 @@
 
           <!-- YouTube embed -->
           <div class="video-wrap">
-            <iframe class="youtube-embed" data-src="https://www.youtube.com/embed/DZg0WkmtX1g?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Classic Portrait Lighting Techniques"></iframe>
+            <div class="video-placeholder" data-src="https://www.youtube.com/embed/DZg0WkmtX1g?rel=0">
+              <img src="https://img.youtube.com/vi/DZg0WkmtX1g/maxresdefault.jpg" alt="Classic Portrait Lighting Techniques">
+              <div class="play-button"></div>
+            </div>
           </div>
           <p class="video-consent-text">Click to load video (loads YouTube cookies)</p>
 
@@ -458,7 +482,10 @@
 
           <!-- YouTube embed -->
           <div class="video-wrap">
-            <iframe class="youtube-embed" data-src="https://www.youtube.com/embed/aCbV8VbjBGI?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Movie Render Graph (MRG)"></iframe>
+            <div class="video-placeholder" data-src="https://www.youtube.com/embed/aCbV8VbjBGI?rel=0">
+              <img src="https://img.youtube.com/vi/aCbV8VbjBGI/maxresdefault.jpg" alt="Movie Render Graph (MRG)">
+              <div class="play-button"></div>
+            </div>
           </div>
           <p class="video-consent-text">Click to load video (loads YouTube cookies)</p>
 
@@ -568,15 +595,28 @@
       if (e.target.tagName === 'IMG') e.preventDefault();
     });
 
-    // Cookie Consent Logic
-    const cookieConsent = localStorage.getItem('cookie_consent');
-    const banner = document.getElementById('cookie-banner');
+    // Click-to-Load logic for videos (Double as Consent)
+    document.querySelectorAll('.video-placeholder').forEach(placeholder => {
+        placeholder.addEventListener('click', () => {
+            const wrap = placeholder.parentElement;
+            const url = placeholder.dataset.src;
 
-    function loadVideos() {
-        document.querySelectorAll('.youtube-embed').forEach(iframe => { 
-            if(!iframe.src) iframe.src = iframe.dataset.src; 
+            // Replace the video-placeholder with a real iframe
+            const newIframe = document.createElement('iframe');
+            newIframe.src = url;
+            newIframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            newIframe.allowFullscreen = true;
+            newIframe.style.width = "100%";
+            newIframe.style.height = "100%";
+            newIframe.style.border = "none";
+            newIframe.style.position = "absolute";
+            newIframe.style.top = "0";
+            newIframe.style.left = "0";
+
+            wrap.appendChild(newIframe);
+            placeholder.remove();
         });
-    }
+    });
 
 
 
