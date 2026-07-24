@@ -40,6 +40,38 @@
     ],
     "knowsAbout": ["Game Design", "3D Art", "Unreal Engine", "Photography"]
   }
+
+    // Cookie Consent Logic
+    const cookieConsent = localStorage.getItem('cookie_consent');
+    const banner = document.getElementById('cookie-banner');
+
+    function loadVideos() {
+        document.querySelectorAll('.youtube-embed').forEach(iframe => { 
+            if(!iframe.src) iframe.src = iframe.dataset.src; 
+        });
+    }
+
+    if (banner) {
+      // Only show banner if no decision has been made yet
+      if (!cookieConsent) {
+        banner.classList.remove('hidden');
+      } else if (cookieConsent === 'accepted') {
+        // Load videos immediately if previously accepted
+        loadVideos();
+      }
+
+      document.getElementById('accept-cookies').addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'accepted');
+        banner.classList.add('hidden');
+        loadVideos();
+      });
+
+      document.getElementById('decline-cookies').addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'declined');
+        banner.classList.add('hidden');
+      });
+    }
+
   </script>
   <link rel="icon" type="image/jpeg" href="favicon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -330,6 +362,15 @@
       .section-title { font-size: 1.5rem; }
       .photo-grid { grid-template-columns: 1fr; }
     }
+
+    /* Cookie Banner */
+    .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000; background: var(--surface); border-top: 1px solid var(--border); padding: 1.5rem; text-align: center; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .cookie-banner.hidden { transform: translateY(100%); opacity: 0; pointer-events: none; }
+    .cookie-banner p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; max-width: var(--max-width); margin-left: auto; margin-right: auto; }
+    .cookie-btn { background: var(--accent); color: var(--bg); border: none; padding: 0.5rem 1.5rem; font-family: inherit; font-weight: 600; cursor: pointer; border-radius: 4px; margin: 0 0.5rem; transition: opacity 0.2s; }
+    .cookie-btn:hover { opacity: 0.8; }
+    .cookie-btn.decline { background: var(--border); color: var(--text); }
+
   </style>
 </head>
 <body id="top">
@@ -401,7 +442,7 @@
 
           <!-- YouTube embed -->
           <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/DZg0WkmtX1g?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Classic Portrait Lighting Techniques"></iframe>
+            <iframe class="youtube-embed" data-src="https://www.youtube.com/embed/DZg0WkmtX1g?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Classic Portrait Lighting Techniques"></iframe>
           </div>
 
           <div class="resources">
@@ -441,7 +482,7 @@
 
           <!-- YouTube embed -->
           <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/aCbV8VbjBGI?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Movie Render Graph (MRG)"></iframe>
+            <iframe class="youtube-embed" data-src="https://www.youtube.com/embed/aCbV8VbjBGI?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Movie Render Graph (MRG)"></iframe>
           </div>
 
           <div class="resources">
@@ -549,7 +590,46 @@
     document.addEventListener('dragstart', e => {
       if (e.target.tagName === 'IMG') e.preventDefault();
     });
+
+    // Cookie Consent Logic
+    const cookieConsent = localStorage.getItem('cookie_consent');
+    const banner = document.getElementById('cookie-banner');
+
+    function loadVideos() {
+        document.querySelectorAll('.youtube-embed').forEach(iframe => { 
+            if(!iframe.src) iframe.src = iframe.dataset.src; 
+        });
+    }
+
+    if (banner) {
+      // Only show banner if no decision has been made yet
+      if (!cookieConsent) {
+        banner.classList.remove('hidden');
+      } else if (cookieConsent === 'accepted') {
+        // Load videos immediately if previously accepted
+        loadVideos();
+      }
+
+      document.getElementById('accept-cookies').addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'accepted');
+        banner.classList.add('hidden');
+        loadVideos();
+      });
+
+      document.getElementById('decline-cookies').addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'declined');
+        banner.classList.add('hidden');
+      });
+    }
+
   </script>
 
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner hidden" id="cookie-banner">
+    <p>This website uses third-party cookies from YouTube to load embedded videos. By accepting, you allow these videos to play.</p>
+    <button class="cookie-btn" id="accept-cookies">Accept</button>
+    <button class="cookie-btn decline" id="decline-cookies">Decline</button>
+  </div>
 </body>
 </html>
