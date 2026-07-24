@@ -51,39 +51,7 @@
         });
     }
 
-    // If user previously declined, show an 'Enable videos' button in the footer
-    if (cookieConsent === 'declined') {
-        const footer = document.querySelector('footer .container');
-        const enableBtn = document.createElement('button');
-        enableBtn.className = 'cookie-btn';
-        enableBtn.textContent = 'Enable YouTube videos';
-        enableBtn.style.marginTop = '1rem';
-        enableBtn.addEventListener('click', () => {
-            localStorage.setItem('cookie_consent', 'accepted');
-            loadVideos();
-            enableBtn.remove();
-        });
-        footer.appendChild(enableBtn);
-    } 
-    // If user previously accepted, load videos immediately and hide banner
-    else if (cookieConsent === 'accepted') {
-        loadVideos();
-    } 
-    // First time visitor: show banner and attach event listeners
-    else if (banner) {
-        banner.classList.remove('hidden');
 
-        document.getElementById('accept-cookies').addEventListener('click', () => {
-            localStorage.setItem('cookie_consent', 'accepted');
-            banner.classList.add('hidden');
-            loadVideos();
-        });
-
-        document.getElementById('decline-cookies').addEventListener('click', () => {
-            localStorage.setItem('cookie_consent', 'declined');
-            banner.classList.add('hidden');
-        });
-    }
 
   </script>
   <link rel="icon" type="image/jpeg" href="favicon.jpg">
@@ -376,13 +344,8 @@
       .photo-grid { grid-template-columns: 1fr; }
     }
 
-    /* Cookie Banner */
-    .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000; background: var(--surface); border-top: 1px solid var(--border); padding: 1.5rem; text-align: center; transition: transform 0.3s ease, opacity 0.3s ease; }
-    .cookie-banner.hidden { transform: translateY(100%); opacity: 0; pointer-events: none; }
-    .cookie-banner p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; max-width: var(--max-width); margin-left: auto; margin-right: auto; }
-    .cookie-btn { background: var(--accent); color: var(--bg); border: none; padding: 0.5rem 1.5rem; font-family: inherit; font-weight: 600; cursor: pointer; border-radius: 4px; margin: 0 0.5rem; transition: opacity 0.2s; }
-    .cookie-btn:hover { opacity: 0.8; }
-    .cookie-btn.decline { background: var(--border); color: var(--text); }
+    /* Video Consent Text */
+    .video-consent-text { color: var(--muted); font-size: 0.8rem; margin-top: 0.5rem; text-align: center; font-style: italic; }
 
   </style>
 </head>
@@ -399,7 +362,7 @@
         <li><a href="#gamedev">Games Development</a></li>
         <li><a href="#photography">Photography Journal</a></li>
       </ul>
-    </div>
+    <p class="video-consent-text">Click to load video (loads YouTube cookies)</p></div>
   </nav>
 
   <!-- Hero -->
@@ -457,6 +420,7 @@
           <div class="video-wrap">
             <iframe class="youtube-embed" data-src="https://www.youtube.com/embed/DZg0WkmtX1g?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Classic Portrait Lighting Techniques"></iframe>
           </div>
+          <p class="video-consent-text">Click to load video (loads YouTube cookies)</p>
 
           <div class="resources">
             <div>
@@ -497,6 +461,7 @@
           <div class="video-wrap">
             <iframe class="youtube-embed" data-src="https://www.youtube.com/embed/aCbV8VbjBGI?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Movie Render Graph (MRG)"></iframe>
           </div>
+          <p class="video-consent-text">Click to load video (loads YouTube cookies)</p>
 
           <div class="resources">
             <div>
@@ -614,48 +579,7 @@
         });
     }
 
-    // If user previously declined, show an 'Enable videos' button in the footer
-    if (cookieConsent === 'declined') {
-        const footer = document.querySelector('footer .container');
-        const enableBtn = document.createElement('button');
-        enableBtn.className = 'cookie-btn';
-        enableBtn.textContent = 'Enable YouTube videos';
-        enableBtn.style.marginTop = '1rem';
-        enableBtn.addEventListener('click', () => {
-            localStorage.setItem('cookie_consent', 'accepted');
-            loadVideos();
-            enableBtn.remove();
-        });
-        footer.appendChild(enableBtn);
-    } 
-    // If user previously accepted, load videos immediately and hide banner
-    else if (cookieConsent === 'accepted') {
-        loadVideos();
-    } 
-    // First time visitor: show banner and attach event listeners
-    else if (banner) {
-        banner.classList.remove('hidden');
-
-        document.getElementById('accept-cookies').addEventListener('click', () => {
-            localStorage.setItem('cookie_consent', 'accepted');
-            banner.classList.add('hidden');
-            loadVideos();
-        });
-
-        document.getElementById('decline-cookies').addEventListener('click', () => {
-            localStorage.setItem('cookie_consent', 'declined');
-            banner.classList.add('hidden');
-        });
-    }
-
-  </script>
 
 
-  <!-- Cookie Banner -->
-  <div class="cookie-banner hidden" id="cookie-banner">
-    <p>This website uses third-party cookies from YouTube to load embedded videos. By accepting, you allow these videos to play.</p>
-    <button class="cookie-btn" id="accept-cookies">Accept</button>
-    <button class="cookie-btn decline" id="decline-cookies">Decline</button>
-  </div>
-</body>
+  </script></body>
 </html>
