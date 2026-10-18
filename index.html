@@ -57,7 +57,7 @@
       --surface: #111;
       --border: #1e1e1e;
       --text: #f0f0f0;
-      --muted: #777;
+      --muted: #808080;
       --accent: #c8a45c;
       --max-width: 1100px;
     }
@@ -386,6 +386,7 @@
     </div>
   </section>
 
+  <main>
   <!-- Games Development -->
   <section class="alt-bg" id="gamedev">
     <div class="container">
@@ -521,6 +522,8 @@
     <img src="" alt="Full size photo">
   </div>
 
+  </main>
+
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -568,15 +571,6 @@
     }, { threshold: 0.15 });
 
     reveals.forEach(el => observer.observe(el));
-
-    // Disable right-click and drag on images
-    document.addEventListener('contextmenu', e => {
-      if (e.target.tagName === 'IMG') e.preventDefault();
-    });
-
-    document.addEventListener('dragstart', e => {
-      if (e.target.tagName === 'IMG') e.preventDefault();
-    });
 
     // Click-to-Load logic for videos (Double as Consent)
     document.querySelectorAll('.video-placeholder').forEach(placeholder => {
